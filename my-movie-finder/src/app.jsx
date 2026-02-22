@@ -1,14 +1,12 @@
+import Search from "./components/Search";
+
 function App() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <h1 className="text-4xl font-bold text-blue-600 mb-4">
-        Movie Finder App
-      </h1>
-      <p className="text-lg text-gray-700">
-        Week 1 setup complete! 🎉 Tailwind CSS is working.
-      </p>
+    <div className="container mx-auto p-4">
+      <h1 className="text-3xl font-bold mb-4 text-center">Movie Finder</h1>
+      <Search />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
