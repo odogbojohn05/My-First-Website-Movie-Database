@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { searchMovies } from "../services/movieService";
 import MovieList from "./MovieList";
 
