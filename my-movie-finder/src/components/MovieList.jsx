@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import MovieCard from "./MovieCard";
+import { searchMovies } from "../services/movieService";
 
 function MovieList({ query }) {
   const [movies, setMovies] = useState([]);
@@ -11,29 +12,13 @@ function MovieList({ query }) {
     setLoading(true);
     setError(null);
 
-    fetch(`https://www.omdbapi.com/?apikey=b92a9ce9&s=${encodeURIComponent(query)}`)
-      .then(res => res.json())
-      .then(data => {
-        if (data.Response === "True") {
-          setMovies(data.Search);
-        } else {
-          setError(data.Error);
-        }
-      })
-      .catch(() => setError("Failed to fetch movies"))
+    searchMovies(query)
+      .then(setMovies)
+      .catch(err => setError(err.message))
       .finally(() => setLoading(false));
   }, [query]);
 
-  if (loading) {
-    return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {Array.from({ length: 6 }).map((_, i) => (
-          <div key={i} className="bg-gray-200 h-80 rounded animate-pulse"></div>
-        ))}
-      </div>
-    );
-  }
-
+  if (loading) return <p className="animate-pulse">Loading movies...</p>;
   if (error) return <p className="text-red-500">{error}</p>;
 
   return (

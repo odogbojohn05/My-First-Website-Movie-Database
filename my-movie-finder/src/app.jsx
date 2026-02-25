@@ -1,20 +1,27 @@
+// src/App.jsx
 import React, { useState } from "react";
-import Landing from "./components/Landing";
-import Search from "./components/Search";
+import Search from "./Search";
+import MovieList from "./components/MovieList";
 
 function App() {
-  const [started, setStarted] = useState(false);
+  const [query, setQuery] = useState("");
 
   return (
-    <div className="container mx-auto p-4">
-      {!started ? (
-        <Landing onStart={() => setStarted(true)} />
-      ) : (
-        <div>
-          <h1 className="text-3xl font-bold mb-4 text-center">Movie Finder</h1>
-          <Search />
-        </div>
+    <div className="min-h-screen bg-gray-100 p-6">
+      <header className="flex items-center mb-6">
+        <span className="text-3xl mr-2">🎬</span>
+        <h1 className="text-3xl font-bold text-blue-600">MovieFinder</h1>
+      </header>
+
+      <Search onSearch={setQuery} />
+
+      {!query && (
+        <p className="text-gray-600 mt-6">
+          Search for movies above to get started.
+        </p>
       )}
+
+      {query && <MovieList query={query} />}
     </div>
   );
 }
