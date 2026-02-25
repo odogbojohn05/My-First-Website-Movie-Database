@@ -1,21 +1,23 @@
-function MovieCard({ movie }) {
+function MovieCard({ title, poster, year, imdbID }) {
   return (
-    <div className="border rounded p-2 shadow hover:shadow-lg transition">
+    <div className="bg-white shadow-md rounded-lg overflow-hidden flex flex-col">
       <img
-        src={movie.Poster !== "N/A" ? movie.Poster : "https://via.placeholder.com/150"}
-        alt={movie.Title}
-        className="w-full h-64 object-cover mb-2 rounded"
+        src={poster !== "N/A" ? poster : "/placeholder.png"}
+        alt={title}
+        className="w-full h-64 object-cover"
       />
-      <h2 className="font-bold text-lg">{movie.Title}</h2>
-      <p className="text-gray-600">{movie.Year}</p>
-      <a
-        href={`https://www.imdb.com/title/${movie.imdbID}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-blue-600 underline"
-      >
-        View on IMDb
-      </a>
+      <div className="p-4 flex-1 flex flex-col justify-between">
+        <h3 className="text-lg font-semibold">{title}</h3>
+        <p className="text-sm text-gray-600">{year}</p>
+        <a
+          href={`https://www.imdb.com/title/${imdbID}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-blue-500 text-white px-3 py-1 rounded mt-2 inline-block text-center"
+        >
+          View on IMDb
+        </a>
+      </div>
     </div>
   );
 }
