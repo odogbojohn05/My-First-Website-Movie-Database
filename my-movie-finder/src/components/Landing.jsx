@@ -1,11 +1,11 @@
 import React from "react";
 
-function Landing() {
+function Landing({ onStart }) {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center 
                     bg-gradient-to-b from-blue-950 via-blue-900 to-indigo-800 text-white">
       
-      
+    
       <div className="mb-6">
         <img
           src="/movie-logo.png" 
@@ -20,9 +20,8 @@ function Landing() {
 
     
       <button
-        onClick={() => window.open("/search", "_blank")}
-        className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full shadow-lg 
-                   transition-transform transform hover:scale-105"
+        onClick={onStart}
+        className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full shadow-lg transition-transform transform hover:scale-105"
       >
         Get Started
       </button>
