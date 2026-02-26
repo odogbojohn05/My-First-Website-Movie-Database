@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Landing from "./components/Landing";
-import SearchPage from "./pages/SearchPage";
+import SearchPage from "./pages/Search";
 import MovieList from "./components/MovieList";
 
 function App() {
