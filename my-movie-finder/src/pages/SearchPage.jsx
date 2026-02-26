@@ -1,32 +1,35 @@
 import React, { useState } from "react";
 import Search from "../components/Search";
+import MovieList from "../components/MovieList";
 
-function SearchPage({ onSearch, onViewResults }) {
-  const [input, setInput] = useState("");
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    if (!input.trim()) return;
-    onSearch(input);      
-    onViewResults();      
-  };
+function SearchPage() {
+  const [query, setQuery] = useState("");
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-2 mb-6">
-      <input
-        type="text"
-        value={input}
-        onChange={e => setInput(e.target.value)}
-        placeholder="Search for movies..."
-        className="border rounded px-4 py-2 w-full"
-      />
-      <button
-        type="submit"
-        className="bg-blue-500 text-white px-4 py-2 rounded"
-      >
-        Search
-      </button>
-    </form>
+    <div className="min-h-screen bg-gray-100 p-6">
+      {/* Header */}
+      <header className="flex items-center mb-6">
+        <span className="text-3xl mr-2">🎬</span>
+        <h1 className="text-3xl font-bold text-blue-600">MovieFinder</h1>
+      </header>
+
+      
+      <Search onSearch={setQuery} />
+
+
+      {!query && (
+        <p className="text-gray-600 mt-6">
+          Search for movies above to get started.
+        </p>
+      )}
+
+      
+      {query && (
+        <div className="mt-6">
+          <MovieList query={query} />
+        </div>
+      )}
+    </div>
   );
 }
 
