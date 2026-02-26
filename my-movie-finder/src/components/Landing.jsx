@@ -14,7 +14,7 @@ function Landing({ onGetStarted }) {
       </div>
 
       <h1 className="text-5xl font-extrabold mb-2 tracking-wide">MovieFinder</h1>
-      <p className="text-lg mb-6 opacity-90">Search movies instantly with the OMDb API</p>
+      <p className="text-lg mb-6 opacity-90">Search movies instantly with the OMDb</p>
 
       <button
         onClick={onGetStarted}   
