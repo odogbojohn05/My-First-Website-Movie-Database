@@ -14,9 +14,9 @@ function MovieList({ query }) {
     setError(null);
 
     searchMovies(query)
-      .then(data => {
-        console.log("Movies received:", data);
-        setMovies(data || []); 
+      .then(moviesArray => {
+        console.log("Movies received:", moviesArray);
+        setMovies(moviesArray); 
       })
       .catch(err => setError(err.message))
       .finally(() => setLoading(false));
@@ -27,7 +27,7 @@ function MovieList({ query }) {
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-      {movies && movies.length > 0 ? (
+      {movies.length > 0 ? (
         movies.map(movie => (
           <MovieCard
             key={movie.imdbID}
