@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import MovieCard from "./MovieCard";
 import { searchMovies } from "../services/movieService";
 
-function MovieList({ query }) {
+function MovieList({ query, year, type }) {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -13,18 +13,16 @@ function MovieList({ query }) {
     setLoading(true);
     setError(null);
 
-    searchMovies(query)
+    searchMovies(query, year, type)
       .then(moviesArray => {
-        console.log("Movies received:", moviesArray);
-        setMovies(moviesArray); 
+        setMovies(moviesArray);
       })
       .catch(err => {
-        console.error("Error fetching movies:", err);
         setError(err.message);
         setMovies([]);
       })
       .finally(() => setLoading(false));
-  }, [query]);
+  }, [query, year, type]);
 
   if (loading) return <p className="animate-pulse">Searching...</p>;
   if (error) return <p className="text-red-500">{error}</p>;
