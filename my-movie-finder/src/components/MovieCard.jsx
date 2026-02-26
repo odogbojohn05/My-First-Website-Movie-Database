@@ -6,7 +6,7 @@ function MovieCard({ title, poster, year, imdbID }) {
       <img
         src={poster !== "N/A" ? poster : "/placeholder.png"}
         alt={title}
-        className="w-full h-64 object-cover"
+        className="h-64 w-full object-cover"
       />
       <div className="p-4">
         <h2 className="text-lg font-semibold text-gray-800 mb-2">
