@@ -28,20 +28,22 @@ function MovieList({ query, year, type }) {
   if (error) return <p className="text-red-500">{error}</p>;
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-      {movies.length > 0 ? (
-        movies.map(movie => (
-          <MovieCard
-            key={movie.imdbID}
-            title={movie.Title}
-            poster={movie.Poster}
-            year={movie.Year}
-            imdbID={movie.imdbID}
-          />
-        ))
-      ) : (
-        <p className="text-gray-600">No movies found.</p>
-      )}
+    <div className="h-[80vh] overflow-y-scroll">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
+        {movies.length > 0 ? (
+          movies.map(movie => (
+            <MovieCard
+              key={movie.imdbID}
+              title={movie.Title}
+              poster={movie.Poster}
+              year={movie.Year}
+              imdbID={movie.imdbID}
+            />
+          ))
+        ) : (
+          <p className="text-gray-600">No movies found.</p>
+        )}
+      </div>
     </div>
   );
 }
