@@ -9,6 +9,7 @@ function MovieList({ query }) {
 
   useEffect(() => {
     if (!query) return;
+
     setLoading(true);
     setError(null);
 
@@ -18,20 +19,24 @@ function MovieList({ query }) {
       .finally(() => setLoading(false));
   }, [query]);
 
-  if (loading) return <p className="animate-pulse">Loading movies...</p>;
+  if (loading) return <p className="animate-pulse">Searching...</p>;
   if (error) return <p className="text-red-500">{error}</p>;
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-      {movies.map(movie => (
-        <MovieCard
-          key={movie.imdbID}
-          title={movie.Title}
-          poster={movie.Poster}
-          year={movie.Year}
-          imdbID={movie.imdbID}
-        />
-      ))}
+      {movies.length > 0 ? (
+        movies.map(movie => (
+          <MovieCard
+            key={movie.imdbID}
+            title={movie.Title}
+            poster={movie.Poster}
+            year={movie.Year}
+            imdbID={movie.imdbID}
+          />
+        ))
+      ) : (
+        <p className="text-gray-600">No movies found.</p>
+      )}
     </div>
   );
 }
