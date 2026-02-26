@@ -14,9 +14,8 @@ export async function searchMovies(query) {
     const data = await res.json();
     console.log("Response:", data);
 
-  
     if (data.Response === "True" && Array.isArray(data.Search)) {
-      return data.Search;
+      return data.Search; 
     }
 
     throw new Error(data.Error || "Movie not found");

@@ -18,7 +18,11 @@ function MovieList({ query }) {
         console.log("Movies received:", moviesArray);
         setMovies(moviesArray); 
       })
-      .catch(err => setError(err.message))
+      .catch(err => {
+        console.error("Error fetching movies:", err);
+        setError(err.message);
+        setMovies([]);
+      })
       .finally(() => setLoading(false));
   }, [query]);
 
