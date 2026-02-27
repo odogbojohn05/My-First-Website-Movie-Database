@@ -34,18 +34,14 @@ function MovieList({ query, onSelectMovie }) {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {movies.map((movie) => (
-            <div
+            <MovieCard
               key={movie.imdbID}
+              title={movie.Title}
+              poster={movie.Poster}
+              year={movie.Year}
+              imdbID={movie.imdbID}
               onClick={() => onSelectMovie(movie)}
-              className="cursor-pointer"
-            >
-              <MovieCard
-                title={movie.Title}
-                poster={movie.Poster}
-                year={movie.Year}
-                imdbID={movie.imdbID}
-              />
-            </div>
+            />
           ))}
         </div>
       )}

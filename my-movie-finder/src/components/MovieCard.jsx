@@ -1,16 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
-function MovieCard({ title, poster, year, imdbID }) {
+function MovieCard({ title, poster, year, imdbID, onClick }) {
   return (
-    <div className="bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-200">
-      <Link to={`/movie/${imdbID}`}>
-        <img
-          src={poster !== "N/A" ? poster : "/placeholder.png"}
-          alt={title}
-          className="h-64 w-full object-cover"
-        />
-      </Link>
+    <div
+      onClick={onClick}
+      className="bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-200 cursor-pointer"
+    >
+      <img
+        src={poster !== "N/A" ? poster : "/placeholder.png"}
+        alt={title}
+        className="h-64 w-full object-cover"
+      />
       <div className="p-4">
         <h2 className="text-lg font-semibold text-yellow-400 mb-2">
           {title} <span className="text-gray-400">({year})</span>
