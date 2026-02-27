@@ -17,8 +17,10 @@ function App() {
 
       {page === "search" && (
         <SearchPage
-          onSearch={setQuery}
-          onViewResults={() => setPage("movies")}
+          onSearch={(q) => {
+            setQuery(q);
+            setPage("movies");
+          }}
         />
       )}
 
@@ -33,7 +35,10 @@ function App() {
       )}
 
       {page === "details" && selectedMovie && (
-        <MovieDetails movie={selectedMovie} onBack={() => setPage("movies")} />
+        <MovieDetails
+          movie={selectedMovie}
+          onBack={() => setPage("movies")}
+        />
       )}
     </div>
   );
