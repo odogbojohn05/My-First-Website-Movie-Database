@@ -25,7 +25,7 @@ function MovieDetails() {
       </Link>
 
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 bg-gray-800 rounded-lg shadow-lg p-6">
-      
+        
         <div className="flex justify-center">
           <img
             src={movie.Poster !== "N/A" ? movie.Poster : "/placeholder.png"}
@@ -34,7 +34,7 @@ function MovieDetails() {
           />
         </div>
 
-      
+        
         <div className="md:col-span-2 space-y-4">
           <h1 className="text-3xl font-bold flex items-center gap-2">
             🎬 <span className="text-yellow-400">{movie.Title}</span>
