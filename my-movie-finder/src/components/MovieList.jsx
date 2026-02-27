@@ -29,7 +29,7 @@ function MovieList({ query, year, type }) {
 
   return (
     <div className="max-w-6xl mx-auto px-4">
-      {/* Force 3 cards per row on desktop */}
+      
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {movies.length > 0 ? (
           movies.map(movie => (

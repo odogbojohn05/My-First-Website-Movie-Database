@@ -17,16 +17,20 @@ function SearchPage() {
   };
 
   return (
-    <div className="w-full min-h-screen bg-gray-50">
-      <div className="max-w-screen-xl mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-6 flex items-center gap-2">
-          🎬 MovieFinder
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-700 text-white">
+    
+      <header className="py-10 text-center">
+        <h1 className="text-4xl font-extrabold tracking-wide flex items-center justify-center gap-2">
+          🎬 <span className="text-yellow-400">MovieFinder</span>
         </h1>
+        <p className="mt-2 text-gray-300">Discover movies, series, and more</p>
+      </header>
 
-        
+      
+      <div className="max-w-3xl mx-auto px-4">
         <form
           onSubmit={handleSearch}
-          className="flex flex-col gap-4 mb-6 sm:flex-row sm:items-center"
+          className="flex flex-col sm:flex-row gap-4 bg-gray-800 p-4 rounded-lg shadow-lg"
         >
           <input
             type="text"
@@ -36,10 +40,10 @@ function SearchPage() {
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search for movies..."
             autoComplete="on"
-            className="border rounded px-4 py-2 flex-1"
+            className="flex-1 px-4 py-2 rounded-md border border-gray-600 bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-yellow-400"
           />
 
-          
+        
           <div className="flex gap-2">
             <input
               type="number"
@@ -48,14 +52,14 @@ function SearchPage() {
               placeholder="Year"
               value={year}
               onChange={(e) => setYear(e.target.value)}
-              className="border rounded px-2 py-2 w-24"
+              className="w-24 px-2 py-2 rounded-md border border-gray-600 bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-yellow-400"
             />
             <select
               id="type-filter"
               name="type-filter"
               value={type}
               onChange={(e) => setType(e.target.value)}
-              className="border rounded px-2 py-2"
+              className="px-2 py-2 rounded-md border border-gray-600 bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-yellow-400"
             >
               <option value="">All</option>
               <option value="movie">Movie</option>
@@ -66,13 +70,15 @@ function SearchPage() {
 
           <button
             type="submit"
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors"
+            className="bg-yellow-400 text-gray-900 font-semibold px-6 py-2 rounded-md hover:bg-yellow-500 transition-colors"
           >
             Search
           </button>
         </form>
+      </div>
 
-        
+      {/* Movie Results */}
+      <main className="max-w-6xl mx-auto px-4 py-8">
         {submittedQuery ? (
           <MovieList
             query={submittedQuery}
@@ -80,9 +86,11 @@ function SearchPage() {
             type={submittedType}
           />
         ) : (
-          <p className="text-gray-600">Search for movies above to get started.</p>
+          <p className="text-gray-300 text-center mt-10">
+            Search for movies above to get started.
+          </p>
         )}
-      </div>
+      </main>
     </div>
   );
 }
