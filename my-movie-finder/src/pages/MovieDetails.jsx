@@ -1,28 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
-import { getMovieDetails } from "../services/movieService";
+import React from "react";
 
-function MovieDetails() {
-  const { imdbID } = useParams();
-  const [movie, setMovie] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    getMovieDetails(imdbID)
-      .then(setMovie)
-      .catch(err => setError(err.message))
-      .finally(() => setLoading(false));
-  }, [imdbID]);
-
-  if (loading) return <p className="animate-pulse text-center">Loading details...</p>;
-  if (error) return <p className="text-red-500 text-center">{error}</p>;
-
+function MovieDetails({ movie, onBack }) {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-700 text-white px-6 py-10">
-      <Link to="/" className="text-yellow-400 hover:underline mb-6 inline-block">
-        ← Back to Search
-      </Link>
+      <button
+        onClick={onBack}
+        className="text-yellow-400 hover:underline mb-6 inline-block"
+      >
+        ← Back to Results
+      </button>
 
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 bg-gray-800 rounded-lg shadow-lg p-6">
         
@@ -40,9 +26,9 @@ function MovieDetails() {
             🎬 <span className="text-yellow-400">{movie.Title}</span>
           </h1>
           <p className="text-gray-400 text-lg">{movie.Year}</p>
-          <p className="text-gray-300">{movie.Plot}</p>
-          <p><strong>Genre:</strong> {movie.Genre}</p>
-          <p><strong>Type:</strong> {movie.Type}</p>
+          <p className="text-gray-300">{movie.Plot || "No plot available."}</p>
+          <p><strong>Genre:</strong> {movie.Genre || "N/A"}</p>
+          <p><strong>Type:</strong> {movie.Type || "N/A"}</p>
 
           <a
             href={`https://www.imdb.com/title/${movie.imdbID}`}
