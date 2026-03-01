@@ -12,7 +12,7 @@ function Landing({ onGetStarted }) {
     >
       <div className="mb-6">
         <img
-          src="/movie-logo.png" 
+          src="/movie-logo.png3" 
           alt="Movie Finder Logo"
           className="w-28 h-28 mx-auto drop-shadow-lg"
         />
