@@ -24,13 +24,13 @@ function MovieList({ query, onSelectMovie }) {
       .finally(() => setLoading(false));
   }, [query]);
 
-  if (loading) return <p className="text-center">Searching...</p>;
+  if (loading) return <p className="text-center text-white">Searching...</p>;
   if (error) return <p className="text-red-500 text-center">{error}</p>;
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
       {movies.length === 0 ? (
-        <p className="text-gray-600 text-center">No movies found.</p>
+        <p className="text-gray-300 text-center">No movies found.</p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {movies.map((movie) => (
