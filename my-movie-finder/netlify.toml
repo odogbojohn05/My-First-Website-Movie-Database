@@ -1,6 +1,6 @@
 [build]
   command = "npm run build"
-  publish = "my-movie-finder/dist"
+  publish = "dist"
   base = "my-movie-finder"
 
 [build.environment]
